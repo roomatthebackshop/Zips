@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DJ NATCHAPON ZIPS</title>
+  <style>
+    /* ye */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #001f3f, #001933);
+      color: #cceeff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow:
+        0 0 10px #00bfff,
+        0 0 20px #00bfff,
+        0 0 30px #00bfff,
+        0 0 40px #0077cc;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .download-section {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .download-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      text-shadow:
+        0 0 10px #00bfff,
+        0 0 20px #00bfff,
+        0 0 30px #00bfff;
+    }
+    .download-button {
+      width: 50px;
+      height: 50px;
+      font-size: 1rem;
+      background-color: #003566;
+      color: #cceeff;
+      border: 2px solid #00bfff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      box-shadow:
+        0 0 10px #00bfff,
+        0 0 20px #00bfff,
+        0 0 30px #00bfff;
+      user-select: none;
+    }
+    .download-button:hover {
+      background-color: #005f99;
+      transform: scale(1.05);
+      box-shadow:
+        0 0 15px #00d5ff,
+        0 0 30px #00d5ff,
+        0 0 45px #00d5ff;
+    }
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Deep Blue Forced Downloads</h1>
+  <p>Click the buttons below to download the files directly.</p>
+
+  <div class="download-section">
+    <h2 class="download-title">MONTAGEM ESPACO RENICHT DJ NATCHAPON REMAKE</h2>
+    <button class="download-button" data-url="https://raw.githubusercontent.com/roomatthebackshop/Files-song/main/montagem%20espaco%20renicht%20remake%20(DJ%20NATCHAPON).zip" data-filename="script.lua" aria-label="Download script.lua"></button>
+  </div>
+
+  <div class="download-section">
+    <h2 class="download-title">📄 ReadMe File</h2>
+    <button class="download-button" data-url="https://raw.githubusercontent.com/your-username/your-repo/branch/path/to/readme.txt" data-filename="readme.txt" aria-label="Download readme.txt"></button>
+  </div>
+
+  <div class="download-section">
+    <h2 class="download-title">🛠️ Config File</h2>
+    <button class="download-button" data-url="https://raw.githubusercontent.com/your-username/your-repo/branch/path/to/config.json" data-filename="config.json" aria-label="Download config.json"></button>
+  </div>
+
+  <footer>&copy; 2025 Deep Blue Horizon</footer>
+
+  <script>
+    async function downloadFile(url, filename) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const blob = await response.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(downloadUrl);
+      } catch (error) {
+        alert('Failed to download file: ' + error.message);
+      }
+    }
+
+    document.querySelectorAll('.download-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const url = button.getAttribute('data-url');
+        const filename = button.getAttribute('data-filename');
+        downloadFile(url, filename);
+      });
+    });
+  </script>
+</body>
+</html>
